@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import {TrackService} from '../../track/track.service';
+import {Track} from '../../track/track';
+import {Observable} from "rxjs";
+import {map} from "rxjs/operators";
 
 @Component({
   selector: 'app-track-list',
@@ -7,9 +11,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TrackListComponent implements OnInit {
 
-  constructor() { }
+  public listOfTracks$: Observable<Track[]>;
+
+  constructor(private trackService: TrackService) { }
 
   ngOnInit() {
+    this.listOfTracks$ = this.trackService.findAll();
   }
 
 }

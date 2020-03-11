@@ -1,1 +1,7 @@
-<p>track-list works!</p>
+<div>
+  <button (click)="trackService.updateCurrentTracks()">Update</button>
+  <ul>
+    <li *ngFor="let track of listOfTracks$ | async">{{track.name}} - {{track.id}}</li>
+  </ul>
+</div>
+
